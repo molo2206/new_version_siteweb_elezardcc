@@ -55,7 +55,7 @@ const Home = () => {
   //   }
   // };
   return (
-    <div className=" py-20   ">
+    <div className="">
       <div
         className=" relative  lg:h-[80vh] dark:bg-slate-800 dark:text-slate-200 "
         data-aos="fade-down"
@@ -68,7 +68,7 @@ const Home = () => {
           loop
           className=" absolute z-10 w-full h-full lg:top-0 -top-[12vh] object-cover opacity-55"
         >
-          <source src="/src/assets/video/media.mp4" type="video/mp4" />
+          <source src="https://apisiteweb.elezardc.org/uploads/video/media.mp4" type="video/mp4" />
         </video>
         <div className=" flex flex-col items-center justify-center relative z-10 lg:h-full h-screen max-w-[1200px] px-6 lg:pt-0 pt-16 mx-auto">
           <p className=" text-3xl text-orange-500 ">{t("Lets_begin")}</p>

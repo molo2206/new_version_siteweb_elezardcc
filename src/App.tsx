@@ -22,7 +22,7 @@ function App() {
   // const [count, setCount] = useState(0);
 
   return (
-    <div className=" dark:bg-slate-900 p-8 ">
+    <div className=" dark:bg-slate-900 ">
       <ScrollToTop />
       <ToastProvider >
       <Routes>

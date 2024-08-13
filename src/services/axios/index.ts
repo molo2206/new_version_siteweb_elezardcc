@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios'
 import { ReactNode } from 'react'
-import { BASE_URL } from '../../src/utils/heleprs'
+import { BASE_URL } from '../../utils/heleprs'
 const instance = axios.create({
 	baseURL: BASE_URL,
 	timeout: 50000,
