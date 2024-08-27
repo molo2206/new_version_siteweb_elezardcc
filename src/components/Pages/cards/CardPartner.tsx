@@ -13,7 +13,7 @@ const CardPartner = ({ partner }: props) => {
           alt="company logo"
           className="inline-block w-20 h-20 rounded-full mx-4"
         />
-        <h1 className=" font-medium items-center justify-center">{partner?.full_name}</h1>
+        {/* <h1 className=" font-medium items-center justify-center">{partner?.full_name}</h1> */}
       </Link>
     </div>
   );

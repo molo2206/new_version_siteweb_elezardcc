@@ -94,7 +94,7 @@ const Home = () => {
                   }
                   options={cat?.map((item: any) => ({
                     label: showingTranslateValue(item?.translations, lang)
-                      ?.value,
+                      ?.name,
                     value: item.id,
                   }))}
                   placeholder={"Entrez votre thematique"}

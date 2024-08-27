@@ -34,11 +34,11 @@ const Input = ({
           onChange={onChange}
           className="w-full  font-montserrat  bg-transparent rounded-md text-slate-900 border py-3 px-4 dark:text-white border-slate-300 dark:border-slate-700 focus:outline-none focus:border-principal focus:dark:border-principal focus:ring-0"
         >
-          <option value={""} defaultChecked>
+          <option className=" bg-white dark:bg-slate-800" value={""} defaultChecked>
             ...
           </option>
           {options?.map((item: any, index: number) => (
-            <option key={index} value={item?.value} defaultChecked>
+            <option key={index} value={item?.value} defaultChecked className=" bg-white dark:bg-slate-800">
               {item?.label}
             </option>
           ))}

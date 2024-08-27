@@ -5,7 +5,6 @@ import {
   FaBars,
   FaCaretDown,
   FaLayerGroup,
-  FaPodcast,
   FaVideo,
   FaXmark,
 } from "react-icons/fa6";
@@ -145,12 +144,12 @@ const Navbar = () => {
                 {t("Videos")}
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="" className=" flex items-center gap-2 first:font-medium">
                 <FaPodcast />
                 Podcast
               </a>
-            </li>
+            </li> */}
             <li>
               <a
                 href="/blogs"

@@ -25,7 +25,7 @@ const About = () => {
             </h2>
             <p className=" md:w-3/4 text-neutralGray mb-8" dangerouslySetInnerHTML={{
                 __html: showingTranslateValue(data?.translations, lang)
-                  ?.mission,
+                  ?.about_us,
               }}
             >
             </p>
