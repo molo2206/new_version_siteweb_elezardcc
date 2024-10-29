@@ -18,10 +18,10 @@ import SettingsServices from "../services/SettingsServices";
 import useAsync from "../hooks/useAsync";
 import CategoryServices from "../services/CategoryServices";
 import CategoryCard from "./Pages/cards/CategoryCard";
+
 const Navbar = () => {
   const { data } = useAsync(() => SettingsServices.getSettings());
   const { data: cat } = useAsync(() => CategoryServices.getCategory());
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const element = document.documentElement;
@@ -61,7 +61,8 @@ const Navbar = () => {
   });
 
   //nav items array
-  const navItems = [
+  const navItems = 
+  [
     { path: t("Home"), link: "/" },
     { path: t("Videos"), link: "/videos" },
     { path: t("Blog"), link: "/blogs" },
