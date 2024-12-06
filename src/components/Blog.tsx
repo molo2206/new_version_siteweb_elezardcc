@@ -7,8 +7,8 @@ const Blog = () => {
 
   return (
     <div
-      className="py-12 px-4 lg:px-14 max-w-screen-2xl
-     mx-auto my-12  dark:bg-slate-800 dark:text-slate-200"
+      className=" mt-20 px-4 lg:px-14 max-w-screen-2xl
+     mx-auto my-12   dark:bg-slate-800 dark:text-slate-200"
       id="testimonial"
     >
       <div className=" text-center md:w-1/2 mx-auto">

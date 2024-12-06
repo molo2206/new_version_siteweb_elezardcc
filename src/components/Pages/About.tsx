@@ -11,90 +11,83 @@ const About = () => {
   const { lang } = useAuthContext();
   const { t } = useTranslation();
   return (
-    <div className="dark:bg-slate-800 dark:text-slate-200 py-20">
+    <div className="dark:bg-slate-800 dark:text-slate-200 px-4 lg:px-14 
+    max-w-screen-2xl  my-8 mt-20 py-20">
       {/* about text */}
-      <div className=" px-4 lg:px-14 max-w-screen-2xl mx-auto my-8">
-        <div className=" md:w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-          <div>
-            <img src={aboutImag} alt="" />
-          </div>
-          <div className=" md:w-3/5 mx-auto">
-            <h2 className=" text-4xl text-neutralDGray font-semibold mb-4 md:w-4/5">
+      <div className=" ">
+        <section className="mb-10">
+          <header className="bg-principal dark:bg-slate-800 w-full dark:text-white rounded-lg text-white py-10">
+            <div className="max-w-6xl mx-auto px-4 text-center">
+              <h1 className="text-4xl font-bold text-gray-800 dark:text-white">{t("AboutUs")}</h1>
+            </div>
+          </header>
+          <section className="bg-white dark:bg-slate-800 border p-6 rounded-lg shadow-md mb-10 mt-10">
+            <h2 className="text-2xl font-semibold dark:text-white text-gray-800 mb-4">
               {t("AboutUs")}
             </h2>
             <p
-              className=" md:w-3/4 text-neutralGray mb-8"
+              className="text-gray-600 leading-relaxed dark:text-white"
               dangerouslySetInnerHTML={{
                 __html: showingTranslateValue(data?.translations, lang)
-                  ?.mission,
+                  ?.about_us,
               }}
             ></p>
-            {/* <button className=" btn-primary" >Contact</button> */}
-          </div>
-        </div>
-      </div>
-      {/* company stats*/}
-      <div className="px-4 lg:px-14 max-w-screen-2xl mx-auto bg-neutralSilver dark:bg-slate-900 dark:text-slate-200 py-16">
-        <div className=" flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className=" md:w-1/2">
-            <h2 className=" text-4xl text-neutralDGray font-semibold mb-4 md:w-2/3">
-              {t('help')} <br />{" "}
-              <span className=" text-brandPrimary">
-                {t('way_contact')}
-              </span>
+          </section>
+
+          {/* Mission, Vision, Values */}
+          <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {/* Mission */}
+            <div className="bg-white border dark:bg-slate-800  p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-gray-800 mb-2 dark:text-white">
+                {t("Mission")}
+              </h3>
+              <p
+                className="text-gray-600 dark:text-white"
+                dangerouslySetInnerHTML={{
+                  __html: showingTranslateValue(data?.translations, lang)
+                    ?.mission,
+                }}
+              ></p>
+            </div>
+
+            {/* Vision */}
+            <div className="bg-white p-6 border rounded-lg shadow-md dark:bg-slate-800">
+              <h3 className="text-xl font-semibold text-gray-800 mb-2 dark:text-white">
+                {t("Vision")}
+              </h3>
+              <p
+                className="text-gray-600 dark:text-white"
+                dangerouslySetInnerHTML={{
+                  __html: showingTranslateValue(data?.translations, lang)
+                    ?.vision,
+                }}
+              ></p>
+            </div>
+            {/* Values */}
+            <div className="bg-white border dark:bg-slate-800 p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-gray-800 mb-2 dark:text-white">
+                {t("Our_Values")}
+              </h3>
+              <ul className="text-gray-600 list-disc ml-5 space-y-2 dark:text-white">
+                <li>{t("Professionalism")}</li>
+                <li>{t("Responsibility")}</li>
+                <li>{t("Mutual_respect")}</li>
+                <li>{t("Gender_sensitivity")}</li>
+                <li>{t("Excellence")}</li>
+                <li>{t("Equity")}</li>
+                <li>{t("Inclusion")}</li>
+                <li>{t("Innovation")}</li>
+              </ul>
+            </div>
+          </section>
+          {/* Image Gallery */}
+          <section className="bg-white p-6  border rounded-lg shadow-md dark:bg-slate-800 ">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4 dark:text-white">
+              {t("Our_achievements")}
             </h2>
-            <p className="">{t('more_info')}</p>
-          </div>
-          {/* stats */}
-          <div className=" md:w-1/2 mx-auto flex sm:flex-row flex-col sm:items-center justify-around gap-12">
-            <div className=" space-y-8">
-              <div className=" flex items-center gap-4">
-                <a
-                //https://wa.me/whatsappphonenumber?text=urlencodedtext
-                  href={`https://wa.me/${data?.phones}?text=${t('message_whatsapp')}`}
-                  target="blank"
-                >
-                  <BsWhatsapp className=" h-10 w-10 text-brandPrimary" />
-                  <div className="">
-                    <p className="text-neutralDGray font-semibold">Whatsapp</p>
-                  </div>
-                </a>
-              </div>
-              <div className=" flex items-center gap-4">
-                <a href={JSON.parse(data?.social_links || "{}")?.facebook}>
-                  <BsFacebook className=" h-10 w-10 text-brandPrimary" />
-                  <div className="">
-                    <p className=" text-neutralDGray font-semibold">Facebook</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div className=" space-y-8">
-              <div className=" flex items-center gap-4">
-                <a
-                  href={JSON.parse(data?.social_links || "{}")?.linkedin}
-                  target="blank"
-                >
-                  <BsLinkedin className=" h-10 w-10 text-brandPrimary" />
-                  <div className="">
-                    <p className=" text-neutralDGray font-semibold">Linkedin</p>
-                  </div>
-                </a>
-              </div>
-              <div className=" flex items-center gap-4">
-                <a
-                  href={JSON.parse(data?.social_links || "{}")?.twitter}
-                  target="blank"
-                >
-                  <BsTwitter className=" h-10 w-10 text-brandPrimary" />
-                  <div className="">
-                    <p className=" text-neutralDGray font-semibold">Twitter</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+          </section>
+        </section>
       </div>
     </div>
   );

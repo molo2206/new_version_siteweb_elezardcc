@@ -15,9 +15,9 @@ import About from "./components/Pages/About";
 import Vision from "./components/Pages/Vision";
 import Finance from "./components/Pages/Finance";
 import Team from "./components/Pages/Team";
-import Partners from "./components/Pages/Partners";
 import DetailBlogs from "./components/Pages/DetailBlogs";
 import Thematiqueblog from "./components/Pages/Thematiqueblog";
+import Partners from "./components/Partners";
 function App() {
   // const [count, setCount] = useState(0);
 

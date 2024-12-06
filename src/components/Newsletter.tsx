@@ -4,10 +4,11 @@ const Newsletter = () => {
 
   const { t } = useTranslation();
   return (
-    <div className=" px-4 lg:px-14 max-w-screen-2xl mx-auto py-16  dark:bg-slate-800 dark:text-slate-200">
+    <div className=" px-4 lg:px-14 max-w-screen-2xl mx-auto
+     bg-neutralSilver dark:bg-slate-900 dark:text-slate-200 mt-10 py-10">
       <div className=" flex items-center justify-center lg:w-2/5 mx-auto">
         <div className=" text-center">
-          <h2 className=" lg:text-5xl text-3xl font-semibold mb-6 lg:leading-snug">
+          <h2 className=" lg:text-3xl text-2xl font-semibold mb-6 lg:leading-snug">
             {t('HowVideo')}
           </h2>
           <div className=" flex items-center justify-center gap-8">

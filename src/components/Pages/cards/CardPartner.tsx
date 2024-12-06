@@ -1,20 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { Link } from "react-router-dom";
 interface props {
   partner?: any;
 }
 const CardPartner = ({ partner }: props) => {
   return (
     <div>
-      <Link to={partner?.url}>
+      <div
+        key={partner.id}
+        className="bg-white shadow-lg rounded-lg p-4 hover:shadow-xl transition-shadow duration-300"
+      >
         <img
           src={partner?.image}
-          alt="company logo"
-          className="inline-block w-20 h-20 rounded-full mx-4"
+          alt={partner?.name}
+          className="h-24 w-24 mx-auto mb-4 object-contain"
         />
-        {/* <h1 className=" font-medium items-center justify-center">{partner?.full_name}</h1> */}
-      </Link>
+        <h2 className="text-xl font-semibold text-gray-800 text-center">
+          {partner?.name}
+        </h2>
+        <p className="text-gray-600 text-sm mt-2 text-center">
+          {partner?.description}
+        </p>
+      </div>
     </div>
   );
 };

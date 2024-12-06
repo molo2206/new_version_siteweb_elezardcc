@@ -12,24 +12,24 @@ const About = () => {
   const { lang } = useAuthContext();
   const { t } = useTranslation();
   return (
-    <div className="dark:bg-slate-800 dark:text-slate-200">
+    <div className="dark:bg-slate-800 dark:text-slate-200 mt-20">
       {/* about text */}
       <div className=" px-4 lg:px-14 max-w-screen-2xl mx-auto my-8">
-        <div className=" md:w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-          <div>
+        <div className=" md:w-11/12 mx-auto flex flex-col md:flex-row 
+        justify-between items-center gap-12 ">
+          <div className="mt-10">
             <img src={aboutImag} alt="" />
           </div>
           <div className=" md:w-3/5 mx-auto">
-            <h2 className=" text-4xl text-neutralDGray font-semibold mb-4 md:w-4/5">
+            <h2 className=" text-4xl text-neutralDGray dark:text-white  font-semibold mb-4 md:w-4/5">
               {t('AboutUs')}
             </h2>
-            <p className=" md:w-3/4 text-neutralGray mb-8" dangerouslySetInnerHTML={{
+            <p className=" md:w-3/4 text-slate-800 mb-8 dark:text-white" dangerouslySetInnerHTML={{
                 __html: showingTranslateValue(data?.translations, lang)
                   ?.about_us,
               }}
             >
             </p>
-            {/* <button className=" btn-primary" >Contact</button> */}
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@ const About = () => {
             <p className="">{t('more_info')}</p>
           </div>
           {/* stats */}
-          <div className=" md:w-1/2 mx-auto flex sm:flex-row flex-col sm:items-center justify-around gap-12">
+          <div className=" md:w-1/2 mx-auto flex sm:flex-row flex-row sm:items-center justify-around gap-12">
             <div className=" space-y-8">
               <div className=" flex items-center gap-4">
                 <a
