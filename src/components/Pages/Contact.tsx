@@ -55,13 +55,25 @@ const Contact = () => {
     }
   };
   return (
-    <div className="py-20 dark:text-slate-200">
-      {/* about text */}
+    <div className=" dark:text-slate-200 mt-20">
+      <div
+        className="bg-gray-100 border-b border-gray-300 bg-cover bg-center py-20"
+        style={{ backgroundImage: "url(https://apisiteweb.elezardc.org/uploads/ban4.png)" }} // Remplacez par le chemin de votre image de fond
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="mt-6"></div>
+          <div className="mt-6">
+            <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded">
+             
+            </button>
+          </div>
+        </div>
+      </div>
       <div className=" px-4 lg:px-14 max-w-screen-2xl mx-auto my-8">
         <div className=" md:w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
           <div className=" md:w-5/5 mx-auto">
             <h2 className=" text-2xl text-neutralDGray font-semibold mb-4 md:w-4/5">
-              {t('get_in_touch')}
+              {t("get_in_touch")}
             </h2>
             {/* <p className=" md:w-3/4 text-neutralGray mb-8"> */}
             <form className="mt-8 space-y-6 mb-8" onSubmit={validation}>
@@ -69,7 +81,7 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                   <Input
                     name="first_name"
-                    label={t('name')}
+                    label={t("name")}
                     placeholder=""
                     type="text"
                     errors={errors.first_name}
@@ -80,7 +92,7 @@ const Contact = () => {
                   />
                   <Input
                     name="last_name"
-                    label={t('prename')}
+                    label={t("prename")}
                     placeholder=""
                     type="text"
                     errors={errors.last_name}
@@ -93,7 +105,7 @@ const Contact = () => {
                 <div className="grid grid-cols-1 gap-4">
                   <Input
                     name="email"
-                    label={t('email')}
+                    label={t("email")}
                     placeholder=""
                     type="text"
                     errors={errors.email}
@@ -106,7 +118,7 @@ const Contact = () => {
                 <div className="grid grid-cols-1 gap-4">
                   <Input
                     name="phone"
-                    label={t('phone')}
+                    label={t("phone")}
                     placeholder=""
                     type="phone"
                     errors={errors.phone}
@@ -119,17 +131,17 @@ const Contact = () => {
                 <div className="grid grid-cols-1 gap-4">
                   <TextArea
                     name="message"
-                    placeholder={t('message')}
+                    placeholder={t("message")}
                     type="text"
                     value={inputs.message}
                     onChange={(e: any) =>
                       handleOnChange(e.target.value, "message")
                     }
-                    label={t('message')}
+                    label={t("message")}
                   />
                 </div>
               </div>
-              <Button label={t('send')} loading={loadingForm} />
+              <Button label={t("send")} loading={loadingForm} />
               <div className="justify-center items-center">
                 <div className="mb-2">
                   <p className="text-sm font-montserrat text-slate-700 dark:text-slate-600 text-justify">
@@ -147,30 +159,27 @@ const Contact = () => {
                 </div>
               </div>
             </form>
-            {/* </p> */}
-            {/* <button className=" btn-primary">Contact</button> */}
           </div>
         </div>
       </div>
-      {/* company stats*/}
       <div className="px-4 lg:px-14 max-w-screen-2xl mx-auto bg-neutralSilver dark:bg-slate-900 dark:text-slate-200 py-16">
         <div className=" flex flex-col md:flex-row justify-between items-center gap-8">
           <div className=" md:w-1/2">
             <h2 className=" text-4xl text-neutralDGray font-semibold mb-4 md:w-2/3">
-              {t('help')} <br />{" "}
-              <span className=" text-brandPrimary">
-                {t('way_contact')}
-              </span>
+              {t("help")} <br />{" "}
+              <span className=" text-brandPrimary">{t("way_contact")}</span>
             </h2>
-            <p className="">{t('more_info')}</p>
+            <p className="">{t("more_info")}</p>
           </div>
           {/* stats */}
           <div className=" md:w-1/2 mx-auto flex sm:flex-row flex-col sm:items-center justify-around gap-12">
             <div className=" space-y-8">
               <div className=" flex items-center gap-4">
                 <a
-                //https://wa.me/whatsappphonenumber?text=urlencodedtext
-                  href={`https://wa.me/${data?.phones}?text=${t('message_whatsapp')}`}
+                  //https://wa.me/whatsappphonenumber?text=urlencodedtext
+                  href={`https://wa.me/${data?.phones}?text=${t(
+                    "message_whatsapp"
+                  )}`}
                   target="blank"
                 >
                   <BsWhatsapp className=" h-10 w-10 text-brandPrimary" />

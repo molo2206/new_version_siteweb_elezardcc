@@ -1,95 +1,130 @@
-import aboutImag from "../../assets/ban3.jpg";
-import { BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp } from "react-icons/bs";
-import SettingsServices from "../../services/SettingsServices";
-import useAsync from "../../hooks/useAsync";
-import { showingTranslateValue } from "../../utils/heleprs";
 import { useAuthContext } from "../../context";
-import { useTranslation } from "react-i18next";
+import useAsync from "../../hooks/useAsync";
+import SettingsServices from "../../services/SettingsServices";
+import { showingTranslateValue } from "../../utils/heleprs";
+import BlogCardLoad from "./cards/BlogCardLoad";
 
 const About = () => {
-  const { data } = useAsync(() => SettingsServices.getSettings());
+  const { data: settings, loading } = useAsync(() =>
+    SettingsServices.getSettings()
+  );
   const { lang } = useAuthContext();
-  const { t } = useTranslation();
   return (
-    <div className="dark:bg-slate-800 dark:text-slate-200 px-4 lg:px-14 
-    max-w-screen-2xl  my-8 mt-20 py-20">
-      {/* about text */}
-      <div className=" ">
-        <section className="mb-10">
-          <header className="bg-principal dark:bg-slate-800 w-full dark:text-white rounded-lg text-white py-10">
-            <div className="max-w-6xl mx-auto px-4 text-center">
-              <h1 className="text-4xl font-bold text-gray-800 dark:text-white">{t("AboutUs")}</h1>
+    <>
+      {loading ? (
+        Array.from(Array(20).keys()).map(() => <BlogCardLoad />)
+      ) : (
+        <div className="bg-gray-50 mt-12">
+          {/* Section À propos */}
+          <div className="py-12 px-6 lg:px-16 bg-blue-50 dark:bg-slate-900  ">
+            <div className="max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-10">
+              <div>
+                <h2 className="text-xl font-bold text-principale mb-4 dark:text-white ">
+                  À propos de nous
+                </h2>
+                <p
+                  className="text-xl font-light text-gray-700 mb-6 dark:text-white "
+                  dangerouslySetInnerHTML={{
+                    __html: showingTranslateValue(settings?.translations, lang)
+                      ?.about_us,
+                  }}
+                ></p>
+              </div>
+              <img
+                src={settings?.img_media} // Remplacez par l'URL réelle de l'image
+                alt="Eleza RDC team"
+                className="rounded-lg shadow-lg w-full"
+              />
             </div>
-          </header>
-          <section className="bg-white dark:bg-slate-800 border p-6 rounded-lg shadow-md mb-10 mt-10">
-            <h2 className="text-2xl font-semibold dark:text-white text-gray-800 mb-4">
-              {t("AboutUs")}
-            </h2>
-            <p
-              className="text-gray-600 leading-relaxed dark:text-white"
-              dangerouslySetInnerHTML={{
-                __html: showingTranslateValue(data?.translations, lang)
-                  ?.about_us,
-              }}
-            ></p>
-          </section>
+          </div>
 
-          {/* Mission, Vision, Values */}
-          <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            {/* Mission */}
-            <div className="bg-white border dark:bg-slate-800  p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2 dark:text-white">
-                {t("Mission")}
+          {/* Section La raison d'être */}
+          <div className="py-8 px-6 lg:px-16 dark:bg-slate-900">
+            <div className="max-w-4xl mx-auto text-center">
+              <h3 className="text-xl font-bold text-principale mb-4 dark:text-white">
+                La raison d'être d'Eleza RDC
               </h3>
               <p
-                className="text-gray-600 dark:text-white"
+                className="text-gray-700 mb-6 font-semibold dark:text-white"
                 dangerouslySetInnerHTML={{
-                  __html: showingTranslateValue(data?.translations, lang)
+                  __html: showingTranslateValue(settings?.translations, lang)
                     ?.mission,
                 }}
               ></p>
-            </div>
-
-            {/* Vision */}
-            <div className="bg-white p-6 border rounded-lg shadow-md dark:bg-slate-800">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2 dark:text-white">
-                {t("Vision")}
-              </h3>
+              <p className="text-gray-700 dark:text-white">
+                Nous avons créé Eleza RDC avec une ambition : créer l'agence web
+                la plus honnête et performante en fin de
+              </p>
               <p
-                className="text-gray-600 dark:text-white"
+                className="text-gray-700 dark:text-white"
                 dangerouslySetInnerHTML={{
-                  __html: showingTranslateValue(data?.translations, lang)
-                    ?.vision,
+                  __html: showingTranslateValue(settings?.translations, lang)
+                    ?.mission,
                 }}
               ></p>
+              <div className="mt-6 dark:text-white">
+                <span className="block font-semibold dark:text-white">Esdras Tsongo</span>
+                <span className="text-gray-600 dark:text-white">CEO d'Eleza RDC</span>
+              </div>
             </div>
-            {/* Values */}
-            <div className="bg-white border dark:bg-slate-800 p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2 dark:text-white">
-                {t("Our_Values")}
+          </div>
+
+          {/* Section Nos engagements */}
+          <div className="py-12 px-6 lg:px-16 bg-blue-50 dark:bg-slate-900">
+            <div className="max-w-7xl mx-auto text-center">
+              <h3 className="text-2xl font-bold text-principale mb-4 dark:text-white">
+                Notre historique
               </h3>
-              <ul className="text-gray-600 list-disc ml-5 space-y-2 dark:text-white">
-                <li>{t("Professionalism")}</li>
-                <li>{t("Responsibility")}</li>
-                <li>{t("Mutual_respect")}</li>
-                <li>{t("Gender_sensitivity")}</li>
-                <li>{t("Excellence")}</li>
-                <li>{t("Equity")}</li>
-                <li>{t("Inclusion")}</li>
-                <li>{t("Innovation")}</li>
-              </ul>
+              <p
+                className="mb-6 dark:bg-slate-400 dark:text-white"
+                dangerouslySetInnerHTML={{
+                  __html: showingTranslateValue(settings?.translations, lang)
+                    ?.history,
+                }}
+              ></p>
+              <div className="grid sm:grid-cols-2 gap-6">
+                {/* Engagement Automatiser */}
+                <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 text-left">
+                  <h4 className="text-xl font-bold text-blue-900 mb-2 dark:text-white">
+                    Filmer
+                  </h4>
+                  <p className="text-gray-600 dark:text-white">
+                    Eleza RDC filme les gens pour plusieurs raisons, qui peuvent
+                    être liées à ses objectifs en matière de communication, de
+                    sensibilisation ou de documentation.
+                  </p>
+                </div>
+                <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 text-left">
+                  <h4 className="text-xl font-bold text-blue-900 mb-2 dark:text-white">
+                    Plaider
+                  </h4>
+                  <p className="text-gray-600 dark:text-white">
+                    Eleza RDC plaide pour les gens parce que c'est une
+                    plateforme engagée dans la défense des droits humains, la
+                    justice sociale et l'amélioration des conditions de vie des
+                    populations en République démocratique du Congo (RDC).
+                  </p>
+                </div>
+
+                {/* Engagement Simplifier */}
+                <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 text-left">
+                  <h4 className="text-xl font-bold text-blue-900 mb-2 dark:text-white">
+                    Humaniser
+                  </h4>
+                  <p className="text-gray-600 dark:text-white">
+                    Contexte local : En RDC, de nombreux défis sociaux
+                    (pauvreté, conflits, accès à la santé, éducation, etc.) sont
+                    souvent traités comme des statistiques ou des problèmes
+                    abstraits. "Humaniser" permet de mettre des visages et des
+                    histoires réelles derrière ces enjeux.
+                  </p>
+                </div>
+              </div>
             </div>
-          </section>
-          {/* Image Gallery */}
-          <section className="bg-white p-6  border rounded-lg shadow-md dark:bg-slate-800 ">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4 dark:text-white">
-              {t("Our_achievements")}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
-          </section>
-        </section>
-      </div>
-    </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

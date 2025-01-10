@@ -1,9 +1,9 @@
 import Skeleton from "react-loading-skeleton";
 
-const BlogCardLoand = () => {
+const BlogCardLoad = () => {
   return (
     <>
-      <div className="p-4 shadow-lg">
+      <div className="p-4 shadow-lg w-full dark:bg-slate-800 ">
         <div className=" overflow-hidden">
           <Skeleton count={1} width="100%" height={200} />
         </div>
@@ -25,4 +25,4 @@ const BlogCardLoand = () => {
   );
 };
 
-export default BlogCardLoand;
+export default BlogCardLoad;

@@ -1,13 +1,10 @@
-import { Footer } from "flowbite-react";
-import { useTranslation } from "react-i18next";
 import SettingsServices from "../services/SettingsServices";
 import useAsync from "../hooks/useAsync";
-import { BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
-import logo from "../assets/logo_.jpg";
 import { useState } from "react";
+import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 const Myfooter = () => {
   const { data } = useAsync(() => SettingsServices.getSettings());
-  const { t } = useTranslation();
+  const { data: address } = useAsync(() => SettingsServices.getAdresse());
   function getDate() {
     const today = new Date();
     const year = today.getFullYear();
@@ -15,90 +12,115 @@ const Myfooter = () => {
   }
   const [currentDate] = useState(getDate());
   return (
-    <Footer
-      container
-      className="dark:bg-slate-800 dark:text-slate-200 bg-neutralSilver"
-    >
-      <div className="w-full ">
-        <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1 dark:text-slate-200 ">
-          <div className=" space-y-4 mb-8">
-            <a
-              href=" "
-              className=" text-2xl font-semibold flex items-center space-x-3"
-            >
-              <img
-                src={logo}
-                alt=""
-                className="w-10 inline-block items-center "
-              />
-              <span className="text-[#263238] dark:text-slate-200 ">
-                Eleza RDC
-              </span>
-            </a>
-            <div>
-              <p className=" mb-1">
-                {" "}
-                Copyright © {parseInt(currentDate)} Eleza RDC ltd.
-              </p>
-              <p> All right reserved</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
-            <div>
-              <Footer.Title title={t("AboutUs")} />
-              <Footer.LinkGroup col>
-                <Footer.Link href="/about">{t("AboutUs")}</Footer.Link>
-                <Footer.Link href="/mission">{t("Mission")}</Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <Footer.Title title={t("follows")} />
-              <Footer.LinkGroup col>
-                <Footer.Link
-                  href={JSON.parse(data?.social_links || "{}")?.facebook}
-                >
-                  Facebook
-                </Footer.Link>
-                <Footer.Link
-                  href={JSON.parse(data?.social_links || "{}")?.linkedin}
-                >
-                  Linkdin
-                </Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <Footer.Title title="Legal" />
-              <Footer.LinkGroup col>
-                <Footer.Link href="#">Privacy Policy</Footer.Link>
-                <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-          </div>
+    <footer className="bg-principale dark:bg-slate-800  dark:text-white  text-white py-10">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* En Plus Section */}
+        <div>
+          <h3 className="font-bold text-lg mb-4">{data?.app_name}</h3>
+          <ul className="space-y-2">
+            <li>
+              <a
+                href="#"
+                className="hover:underline text-sm md:text-base"
+              >
+                Blog
+              </a>
+            </li>
+            <li>
+              <a
+                href="/newsletter-inscription"
+                className="hover:underline text-sm md:text-base"
+              >
+                La newsletter
+              </a>
+            </li>
+          </ul>
         </div>
-        <Footer.Divider />
-        <div className="w-full sm:flex sm:items-center sm:justify-between">
-          <Footer.Copyright
-            href="#"
-            by="Flowbite™"
-            year={parseInt(currentDate)}
-          />
-          <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-            <Footer.Icon
-              href={JSON.parse(data?.social_links || "{}")?.facebook}
-              icon={BsFacebook}
-            />
-            <Footer.Icon
-              href={JSON.parse(data?.social_links || "{}")?.twitter}
-              icon={BsTwitter}
-            />
-            <Footer.Icon
-              href={JSON.parse(data?.social_links || "{}")?.linkedin}
-              icon={BsLinkedin}
-            />
-          </div>
+        {/* À Propos Section */}
+        <div>
+          <h3 className="font-bold text-lg mb-4">À propos</h3>
+          <ul className="space-y-2">
+            <li>
+              <a
+                href="/about"
+                className="hover:underline text-sm md:text-base"
+              >
+                À propos
+              </a>
+            </li>
+            <li>
+              <a
+                href="/contact"
+                className="hover:underline text-sm md:text-base"
+              >
+                Nous contacter
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Contact Section */}
+        <div>
+          <h3 className="font-bold text-lg mb-4">Contactez-nous !</h3>
+          <p className="mb-2">
+            <span className="block text-sm md:text-base" >
+              {address?.adresse +
+                "/" +
+                address?.city +
+                "/" +
+                address?.country?.name}
+            </span>
+          </p>
+
+          <p className="mb-2">
+            <a
+              href={"tel:" + address?.phones}
+              className="hover:underline text-sm md:text-base"
+              
+            >
+              {address?.phones}
+            </a>
+          </p>
+          <p>
+            <a
+              href={"mailto:" + address?.emails}
+              className="hover:underline text-sm md:text-base"
+              
+            >
+              {address?.emails}
+            </a>
+          </p>
         </div>
       </div>
-    </Footer>
+
+      {/* Social Media Icons */}
+      <div className="mt-10 text-center">
+        <div className="flex justify-center space-x-4">
+          <a
+            target="_blank"
+            href={JSON.parse(data?.social_links || "{}")?.facebook}
+            className="text-white text-xl font-light hover:text-gray-400"
+          >
+            <FaFacebook />
+          </a>
+          <a
+            href={JSON.parse(data?.social_links || "{}")?.twitter}
+            className="text-white text-xl font-light hover:text-gray-400"
+          >
+            <FaTwitter />
+          </a>
+          <a
+            href={JSON.parse(data?.social_links || "{}")?.linkedin}
+            className="text-white text-xl font-light hover:text-gray-400"
+          >
+            <FaLinkedin />
+          </a>
+        </div>
+        <p className=" py-4 font-light" style={{ fontSize: 11 }}>
+          {data?.app_name}. © {currentDate}
+        </p>
+      </div>
+    </footer>
   );
 };
 

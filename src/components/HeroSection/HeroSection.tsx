@@ -5,13 +5,8 @@ import { MdOutlineParagliding } from "react-icons/md";
 import Carousel from "react-multi-carousel";
 import SettingsServices from "../../services/SettingsServices";
 import useAsync from "../../hooks/useAsync";
-import { showingTranslateValue } from "../../utils/heleprs";
-import { useAuthContext } from "../../context";
-import { useTranslation } from "react-i18next";
 const HeroSection = () => {
   const { data } = useAsync(() => SettingsServices.getSettings());
-  const { lang } = useAuthContext();
-  const { t } = useTranslation();
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },

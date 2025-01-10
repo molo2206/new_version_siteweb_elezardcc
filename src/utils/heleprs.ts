@@ -11,15 +11,10 @@ export const showingTranslateValue = (data: any, lang: any) => {
 	}
 }
 
-export function checkPermission(ressource: any, access: string) {
-	const userData = localStorage.getItem('_DICI_AUTH')
-	if (userData) {
-		const user: any = JSON.parse(userData)
-		return user?.permissions?.find(
-			(item: any) => item?.name === ressource && item?.access[access]
-		)
-	}
+export function limittext(text: string, limit: number) {
+	return text.length > limit ? text.slice(0, limit) + "..." : text
 }
+
 
 export const date_format = (data: any) => {
 	return moment(data).format('DD/MM/YYYY')

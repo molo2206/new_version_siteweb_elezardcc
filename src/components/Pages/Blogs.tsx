@@ -1,32 +1,53 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from "react";
 import useAsync from "../../hooks/useAsync";
 import BlogServices from "../../services/BlogsServices";
 import CardBlog from "../Pages/cards/CardBlog";
+import BlogCardLoad from "./cards/BlogCardLoad";
+import Pagination from "../Pagination/Pagination";
+import SideBlog from "./cards/SideBlog";
+import SearchForm from "./cards/SearchForm";
 const Blogs = () => {
-  const { data } = useAsync(() => BlogServices.getBlogHome());
+  const { data, loading } = useAsync(() => BlogServices.getBlogHome());
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(10);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentBlog = data?.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
+
   return (
-    <div
-      className="py-12 px-4 lg:px-14 max-w-screen-2xl
-   mx-auto my-12  dark:bg-slate-800 dark:text-slate-200"
-      id="testimonial"
-    >
-      <div className=" text-center md:w-1/2 mx-auto">
-        <h2 className=" text-4xl text-neutralDGray font-semibold mb-4 md:w-4/5">
-          Blogs
-        </h2>
-        {/* <p className=" text-sm text-neutralGray mb-8 md:w-3/4 mx-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-          aspernatur assumenda, dolorem aperiam vero, illo, quae odio quibusdam
-          ab porro fugit repudiandae distinctio quos laboriosam illum in magnam
-          laborum earum. Voluptas, blanditiis.
-        </p> */}
-      </div>
-      <div className=" grid lg:grid-cols-3 sm:grid-cols-1 gap-8 h-96 items-center justify-between">
-        {data.map((blog: any) => (
-          <CardBlog blog={blog} />
-        ))}
-      </div>
-    </div>
+    <>
+      {loading ? (
+        Array.from(Array(20).keys()).map(() => <BlogCardLoad />)
+      ) : (
+        <div className="text-slate-800 bg-white min-h-screen px-4 md:px-16 py-20">
+          <SearchForm title="Articles" />
+          <div className="flex flex-col md:flex-row mt-8 gap-8">
+            <div className="hidden md:block">
+              <SideBlog />
+            </div>
+            <div className="bg-white py-2">
+              <div className="container mx-auto px-6">
+                <div className="space-y-12">
+                  {currentBlog.map((blog: any) => (
+                    <CardBlog blog={blog} />
+                  ))}
+                </div>
+                <Pagination
+                  postsPerPage={postsPerPage}
+                  totalPasts={data.length}
+                  paginate={paginate}
+                />
+              </div>
+            </div>
+          </div>
+          <div className=" md:hidden py-36">
+            <SideBlog />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

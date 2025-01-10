@@ -14,7 +14,7 @@ const About = () => {
   return (
     <div className="dark:bg-slate-800 dark:text-slate-200 mt-20">
       {/* about text */}
-      <div className=" px-4 lg:px-14 max-w-screen-2xl mx-auto my-8">
+      <div className="px-40 w-4/4 bg-gray-50 p-8 lg:px-14  my-8">
         <div className=" md:w-11/12 mx-auto flex flex-col md:flex-row 
         justify-between items-center gap-12 ">
           <div className="mt-10">

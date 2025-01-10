@@ -1,14 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter+wght@100,200,300;400,500,600,700,800&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Inter+wght@100,200,300;400,500,600,700,800&display=swap');
-
-body{
-   font-family: 'Inter', sans-serif;
+body {
+  font-family: "Inter", sans-serif;
 }
 
 header {
-   z-index: 10001 !important;
+  z-index: 10001 !important;
 }
 
-.btn-primary{
-   @apply px-7 py-2 bg-brandPrimary text-white rounded hover:bg-neutralDGray transition-all duration-300 hover:-translate-y-4 
+.btn-primary {
+  @apply px-7 py-2 bg-brandPrimary text-white rounded hover:bg-neutralDGray transition-all duration-300 hover:-translate-y-4;
+}
+
+.molo-container {
+  position: relative;
+  height: auto;
+  overflow: hidden;
+}
+
+.molobg {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  filter: blur(5px);
+  position: absolute;
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.scroll-x{
+   width: 100%;
+   overflow-x: auto;
+   display: flex;
+   white-space: nowrap; /* Prevent line breaks */
+   gap: 10px; /* Space between items */
+   padding: 10px;
+   background: #f4f4f4;
+}
+
+
+.item {
+   flex: 0 0 auto; /* Prevent items from shrinking or stretching */
+   width: 150px;
+   height: 300px;
+   background: #007bff;
+   color: white;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px;
 }

@@ -29,7 +29,7 @@ const Input = ({
       {type === "select" ? (
         <select
           name={name}
-          style={{ height: 50 }}
+          style={{ height: 30 }}
           value={value}
           onChange={onChange}
           className="w-full  font-montserrat  bg-transparent rounded-md text-slate-900 border py-3 px-4 dark:text-white border-slate-300 dark:border-slate-700 focus:outline-none focus:border-principal focus:dark:border-principal focus:ring-0"
@@ -46,7 +46,7 @@ const Input = ({
       ) : (
         <input
           name={name}
-          style={{ height: 50 }}
+          style={{ height: 30 }}
           value={value}
           autoComplete="off"
           type={type || "text"}

@@ -5,31 +5,49 @@ import { useParams } from "react-router-dom";
 import { showingTranslateValue } from "../../utils/heleprs";
 import { useAuthContext } from "../../context";
 import BlogThematiqueCard from "./cards/BlogThematiqueCard";
+import BlogCardLoad from "./cards/BlogCardLoad";
+import SideBlog from "./cards/SideBlog";
+import SearchForm from "./cards/SearchForm";
 
 const Thematiqueblog = () => {
   const { id } = useParams();
   const { lang } = useAuthContext();
-  const { data } = useAsync(() => CategoryServices.getblogCat(id), id);
+  const { data, loading } = useAsync(() => CategoryServices.getblogCat(id), id);
   const { data: cat } = useAsync(() => CategoryServices.getOneCategory(id), id);
   console.log(cat);
+
   return (
-    <div
-      className="py-12 px-4 lg:px-14 max-w-screen-2xl
-   mx-auto my-12  dark:bg-slate-800 dark:text-slate-200"
-      id="testimonial"
-    >
-      <section className="mb-10 ">
-        {/* <SimpleBannerBlog img={Img1} /> */}
-        <h1 className=" mb-8 border-l-8 py-2 pl-2 text-center text-3xl font-bold">
-          {showingTranslateValue(cat?.translations, lang)?.name}
-        </h1>
-        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-          {data.map((item: any, index: number) => (
-            <BlogThematiqueCard cat={item} key={index} />
-          ))}
+    <>
+      {loading ? (
+        Array.from(Array(20).keys()).map(() => <BlogCardLoad />)
+      ) : (
+        <div className="text-slate-800 bg-white min-h-screen px-4 md:px-16 py-20">
+          <SearchForm
+            title={showingTranslateValue(cat?.translations, lang)?.name}
+          />
+          <div className="flex flex-col md:flex-row mt-8 gap-8">
+            <div className="hidden md:block">
+              <SideBlog />
+            </div>
+            {/* Video Section */}
+            <div className="flex-1">
+              <div className="relative w-full h-64 md:h-96">
+                <div className="flex space-x-2 overflow-x-auto scrollbar-hide">
+                  {data.map((blog: any, index: any) => (
+                    <div key={index} className=" flex-shrink-0">
+                      <BlogThematiqueCard cat={blog} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className=" md:hidden py-36">
+              <SideBlog />
+            </div>
+          </div>
         </div>
-      </section>
-    </div>
+      )}
+    </>
   );
 };
 

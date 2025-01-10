@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Spinner from "react-bootstrap/Spinner";
+import { FaSearch } from "react-icons/fa";
 interface props {
   onClick?: any;
   label?: any;
@@ -15,8 +16,9 @@ const ButtonSearch = ({ onClick, label, type, loading }: props) => {
       type={type || "submit"}
       className={`px-3 ${
         loading ? "cursor-not-allowed opacity-50" : ""
-      } py-2 text-lg rounded-md w-full text-white bg-brandPrimary dark:bg-slate-900 dark:text-white fa fa-search`}
+      } absolute right-2 top-1/2 transform -translate-y-1/2 text-blue-500 fa fa-search`}
     >
+      <FaSearch />
       {label}
 
       <Spinner color="red" variant="primary" animation="border" />

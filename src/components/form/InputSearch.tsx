@@ -44,7 +44,7 @@ interface props {
         ) : (
           <input
             name={name}
-            style={{ height: 50, width: 220 }}
+            style={{ height: 40, width: 280 }}
             value={value}
             autoComplete="off"
             placeholder={placeholder}
