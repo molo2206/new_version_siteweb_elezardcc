@@ -27,6 +27,7 @@ import EditorialTeam from "./components/Pages/EditorialTeam";
 import PressPage from "./components/Pages/PressPage";
 import NewsletterPage from "./components/Pages/NewsletterPage";
 import ResearchPage from "./components/Pages/ResearchPage";
+import ResearchPageVideo from "./components/Pages/ResearchPageVideo";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -67,6 +68,7 @@ function App() {
               element={<EditorialTeam />}
             ></Route>
             <Route path="/search" element={<ResearchPage />}></Route>
+            <Route path="/search/video" element={<ResearchPageVideo />}></Route>
           </Route>
         </Routes>
       </ToastProvider>

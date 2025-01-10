@@ -7,7 +7,7 @@ import useAsync from "../../hooks/useAsync";
 import CategoryServices from "../../services/CategoryServices";
 import BlogCardLoad from "./cards/BlogCardLoad";
 import Side from "./cards/Side";
-import { FaSearch } from "react-icons/fa";
+import SearchFormVideo from "./cards/SearchFormVideo";
 
 const Videos = () => {
   const [allvideos, setAllvideos] = useState([]);
@@ -39,32 +39,7 @@ const Videos = () => {
         Array.from(Array(20).keys()).map(() => <BlogCardLoad />)
       ) : (
         <div className="text-slate-800 bg-white min-h-screen px-4 md:px-16 py-20">
-          <nav className="flex justify-between items-center border-b border-gray-700 pb-4 py-10">
-            <div className="flex space-x-6 text-sm md:text-base">
-              <h1 className="text-2xl font-bold">Dernières vidéos publiées</h1>
-            </div>
-            <div className="relative md:hidden block ">
-              <input
-                type="text"
-                placeholder="Votre recherche"
-                className="rounded-full px-4 py-1 text-black w-40 md:w-60"
-              />
-              <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-blue-500">
-                <FaSearch />
-              </button>
-            </div>
-            <div className="relative hidden md:block ">
-              <input
-                type="text"
-                placeholder="Votre recherche"
-                className="rounded-full px-4 py-1 text-black w-40 md:w-60"
-              />
-              <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-blue-500">
-                <FaSearch />
-              </button>
-            </div>
-          </nav>
-          {/* Content */}
+          <SearchFormVideo title="Dernières vidéos publiées" />
           <div className="flex flex-col md:flex-row mt-8 gap-8">
             <div className="hidden md:block">
               <Side />

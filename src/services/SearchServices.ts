@@ -9,6 +9,13 @@ const SearchServices = {
             },
         })
     },
+    search_video: async (body: any, page: number) => {
+        return requests.post(`/search_video${page ? "?page=" + page : ""}`, body, {
+            headers: {
+                Accept: 'application/json',
+            },
+        })
+    },
     getResultSearch: async () => {
         return requests.get(`/all_result`)
     },

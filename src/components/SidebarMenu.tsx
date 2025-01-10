@@ -116,7 +116,7 @@ const SidebarMenu = ({ showMenu }: props) => {
                     <a href="/videos">Vidéos</a>
                   </li>
                   <li>
-                    <a href="#">Galerie</a>
+                    <a href="/blogs">Articles</a>
                   </li>
                 </ul>
               )}
@@ -196,7 +196,7 @@ const SidebarMenu = ({ showMenu }: props) => {
               {dropdownOpen && (
                 <div className="absolute right-0 mt-2 w-40 bg-white  border dark:border-slate-600 rounded shadow-lg">
                   <button
-                    className="flex items-center gap-2 w-full px-4 py-2 dark:bg-slate-800 text-white hover:bg-gray-100"
+                    className="flex items-center gap-2 w-full px-4 py-2 dark:bg-slate-800 text-white dark:text-white hover:bg-gray-100"
                     onClick={() => selectLanguage("en")}
                   >
                     <ReactCountryFlag
