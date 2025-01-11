@@ -36,7 +36,7 @@ const VideoListCategory = () => {
             </div>
             <div className="flex-1">
               <div className="relative w-full h-64 md:h-96">
-                <div className="flex space-x-2 overflow-x-auto scrollbar-hide">
+                <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
                   {video.map((video: any, index: any) => (
                     <div key={index} className=" flex-shrink-0">
                       <CardCat video={video} />

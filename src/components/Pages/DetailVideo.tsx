@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import useAsync from "../../hooks/useAsync";
 import {
   date_format,
@@ -12,6 +13,8 @@ import Side from "./cards/Side";
 import { useAuthContext } from "../../context";
 import ShareButton from "./cards/ShareButton";
 import SearchFormVideo from "./cards/SearchFormVideo";
+// import CardCat from "./cards/CardCat";
+// import { useState } from "react";
 
 const DetailVideo = () => {
   const { id } = useParams();
@@ -19,6 +22,10 @@ const DetailVideo = () => {
     () => VideosServices.OneVid(id),
     id
   );
+  // const { data } = useAsync(
+  //   () => VideosServices.getByCategory(video?.category?.id),
+  //   video?.category?.id
+  // );
   const { lang } = useAuthContext();
   // const { data: lastvideo } = useAsync(() => VideosServices.LastVideo());
   // const { data: home } = useAsync(() => VideosServices.getVideoHome());
@@ -46,7 +53,9 @@ const DetailVideo = () => {
               <Side />
             </div>
             <div className="flex-1">
+              
               <div className="">
+                
                 <ul className="flex space-x-6 text-sm md:text-base">
                   <li className="hover:underline">
                     <a href="/">Accueil</a>

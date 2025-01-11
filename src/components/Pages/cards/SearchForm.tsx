@@ -23,7 +23,7 @@ const SearchForm = ({ title }: any) => {
     <div>
       <nav className="flex justify-between items-center border-b border-gray-700 pb-4 py-10">
         <div className="flex space-x-6 text-sm md:text-base">
-          <h1 className="text-2xl font-bold">{title}</h1>
+          <h1 className="md:text-2xl text-sm font-bold">{title}</h1>
         </div>
         <form className="relative md:hidden block " onSubmit={validation}>
           <InputSearch

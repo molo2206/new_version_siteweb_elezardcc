@@ -43,7 +43,7 @@ const Home = () => {
                 ></div>
 
                 <div className=" relative rounded-lg py-2 ">
-                  <main className="max-w-4xl mx-auto mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  <main className="max-w-4xl  mx-auto mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {/* Video Section */}
                     <section className="col-span-2">
                       <div className="relative w-full pb-[56.25%] py-20 bg-black rounded-lg overflow-hidden">
@@ -86,11 +86,11 @@ const Home = () => {
               </div>
             </section>
 
-            <div className=" md:w-[940px] lg:w-full w-[350px] py-4">
-              <h2 className="font-extrabold text-sm md:text-base mb-2 text-slate-900">
+            <div className=" md:w-[940px] lg:w-full w-[300px] py-4">
+              <h2 className="font-semibold text-xl md:text-2xl mb-2 text-slate-900">
                 Dernières vidéos publiées
               </h2>
-              <div className="flex space-x-2 overflow-x-auto scrollbar-hide">
+              <div className="flex space-x-2 overflow-x-auto scrollbar-hide py-2">
                 {home.map((video: any, index: any) => (
                   <div key={index} className=" flex-shrink-0">
                     <ShortVideo video={video} index={index} />
@@ -101,11 +101,11 @@ const Home = () => {
             {Group.map(
               (video: any) =>
                 video?.videos?.length > 0 && (
-                  <div className="md:w-[940px]  lg:w-full w-[350px]">
-                    <h2 className="font-extrabold  text-sm md:text-base mb-2 text-slate-900">
+                  <div className="md:w-[940px]  lg:w-full w-[w-[330px] py-2">
+                    <h2 className="font-semibold text-xl md:text-2xl mb-2 text-slate-900">
                       {showingTranslateValue(video?.translations, lang)?.name}
                     </h2>
-                    <div className="flex space-x-2 overflow-x-auto scrollbar-hide">
+                    <div className="flex space-x-2 overflow-x-auto scrollbar-hide py-2">
                       {video.videos.map((item: any, index: any) => (
                         <div key={index} className="flex-shrink-0">
                           <ShortVideo video={item} index={index} />

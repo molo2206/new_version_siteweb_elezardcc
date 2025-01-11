@@ -21,13 +21,15 @@ interface props {
   }: props) => {
     return (
       <div className="block">
-        <label className="text-sm font-montserrat  items-center justify-center sm:text-md font-semibold tracking-tight text-gray-900 dark:text-white">
+        <label className="text-sm font-montserrat 
+         items-center justify-center sm:text-md font-semibold
+          tracking-tight text-gray-900 dark:text-white">
           {label}
         </label>
         {type === "select" ? (
           <select
             name={name}
-            style={{ height: 50 , width: 220}}
+            style={{ height: 50 , width: 200}}
             value={value}
             onChange={onChange}
             className="w-full  font-montserrat  bg-transparent dark:bg-slate-800 rounded-3xl text-slate-900 border py-3 px-4 dark:text-white border-slate-300 dark:border-slate-700 focus:outline-none focus:border-principal focus:dark:border-principal focus:ring-0"
@@ -44,7 +46,7 @@ interface props {
         ) : (
           <input
             name={name}
-            style={{ height: 40, width: 280 }}
+            style={{ height: 40, width: 200 }}
             value={value}
             autoComplete="off"
             placeholder={placeholder}
