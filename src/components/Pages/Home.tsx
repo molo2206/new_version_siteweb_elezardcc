@@ -98,8 +98,7 @@ const Home = () => {
                 ))}
               </div>
             </div>
-            {Group.map(
-              (video: any) =>
+            {Group.map((video: any) =>
                 video?.videos?.length > 0 && (
                   <div className="md:w-[940px]  lg:w-full w-[w-[330px] py-2">
                     <h2 className="font-semibold text-xl md:text-2xl mb-2 text-slate-900">
@@ -107,7 +106,8 @@ const Home = () => {
                     </h2>
                     <div className="flex space-x-2 overflow-x-auto scrollbar-hide py-2">
                       {video.videos.map((item: any, index: any) => (
-                        <div key={index} className="flex-shrink-0">
+                        <div key={index} className="flex-shrink-0" >
+                          {limittext}
                           <ShortVideo video={item} index={index} />
                         </div>
                       ))}
