@@ -44,16 +44,20 @@ const About = () => {
               <h3 className="text-xl font-bold text-principale mb-4 dark:text-white">
                 La raison d'être d'Eleza RDC
               </h3>
-              <p
+              {/* <p
                 className="text-gray-700 mb-6 font-semibold dark:text-white"
                 dangerouslySetInnerHTML={{
                   __html: showingTranslateValue(settings?.translations, lang)
                     ?.mission,
                 }}
-              ></p>
+              ></p> */}
               <p className="text-gray-700 dark:text-white">
-                Nous avons créé Eleza RDC avec une ambition : créer l'agence web
-                la plus honnête et performante en fin de
+                Eleza RDC est une organisation non gouvernementale qui promeut
+                le journalisme de qualité à travers la production des contenus
+                vidéos animés par les jeunes avec un accent sur les droits
+                humains, l’environnement et la lutte contre les fausses
+                informations en République démocratique du Congo et la Région
+                des Grands-Lacs .
               </p>
               <p
                 className="text-gray-700 dark:text-white"
@@ -62,10 +66,6 @@ const About = () => {
                     ?.mission,
                 }}
               ></p>
-              <div className="mt-6 dark:text-white">
-                <span className="block font-semibold dark:text-white">Esdras Tsongo</span>
-                <span className="text-gray-600 dark:text-white">CEO d'Eleza RDC</span>
-              </div>
             </div>
           </div>
 

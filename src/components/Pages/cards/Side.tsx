@@ -16,11 +16,11 @@ const Side = () => {
       {loading ? (
         Array.from(Array(20).keys()).map(() => <BlogCardLoad />)
       ) : (
-        <div className="w-full h-98 border border-r-1   bg-white shadow-lg flex flex-col">
+        <div className="w-full h-98 border border-r-1 mt-4 bg-white shadow-lg flex flex-col">
           <div className="p-4 text-xl font-bold text-slate-900">
             Thématiques.
           </div>
-          <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+          <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 p-2">
             <ul className="space-y-4 px-4">
               {category.map((item: any, index: any) => (
                 <li
@@ -39,11 +39,7 @@ const Side = () => {
                 </li>
               ))}
             </ul>
-            <div className="p-4 border-t border-slate-700">
-              <a href="#" className="text-gray-500 hover:text-blue-500 text-sm">
-                Annonceurs →
-              </a>
-            </div>
+            
           </div>
 
           {/* Footer */}

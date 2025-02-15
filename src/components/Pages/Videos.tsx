@@ -40,7 +40,7 @@ const Videos = () => {
       ) : (
         <div className="text-slate-800 bg-white min-h-screen px-4 md:px-16 py-20">
           <SearchFormVideo title="Dernières vidéos publiées" />
-          <div className="flex flex-col md:flex-row mt-8 gap-8">
+          <div className="flex flex-col md:flex-row mt-2 gap-8">
             <div className="hidden md:block">
               <Side />
             </div>
