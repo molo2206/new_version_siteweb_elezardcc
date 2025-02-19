@@ -16,7 +16,7 @@ const Side = () => {
       {loading ? (
         Array.from(Array(20).keys()).map(() => <BlogCardLoad />)
       ) : (
-        <div className="w-full h-98 border border-r-1 mt-4 bg-white shadow-lg flex flex-col">
+        <div className="w-full h-98  mt-4 bg-white  flex flex-col">
           <div className="p-4 text-xl font-bold text-slate-900">
             Thématiques.
           </div>

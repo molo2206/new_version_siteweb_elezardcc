@@ -82,7 +82,7 @@ const ResearchPageVideo = () => {
         <div className="text-slate-800 bg-white min-h-screen px-4 md:px-16 py-20">
           <SearchFormVideo title="Résultat de la recherche" />
           <div className="flex flex-col md:flex-row mt-8 gap-8">
-            <div className="hidden md:block">
+            <div className="hidden md:block w-1/5 p-4 bg-white shadow-lg h-screen sticky top-16 mt-2 rounded-lg">
               <SideBlog />
             </div>
             <div className="bg-white py-2">

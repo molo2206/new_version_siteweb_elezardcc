@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAsync from "../../hooks/useAsync";
 import Video from "../../services/VideosServices";
 import { useAuthContext } from "../../context";
-import { limittext, showingTranslateValue } from "../../utils/heleprs";
+import { date_format, limittext, showingTranslateValue } from "../../utils/heleprs";
 import YouTube from "react-youtube";
 import Side from "./cards/Side";
 import BlogCardLoad from "./cards/BlogCardLoad";
@@ -29,43 +29,43 @@ const Home = () => {
           <BlogCardLoad key={index} />
         ))
       ) : (
-        <div className="flex flex-col lg:flex-row min-h-screen bg-white mt-20">
+        <div className="flex flex-col lg:flex-row min-h-screen bg-gray-100 mt-20">
           {/* Sidebar (caché sur mobile) */}
-          <div className="hidden md:block w-1/4 lg:w-1/5">
+          <div className="hidden md:block w-1/5 p-4 bg-white shadow-md h-screen sticky top-16 mt-4 rounded-lg">
             <Side />
           </div>
 
           {/* Contenu principal */}
-          <main className="flex-1 p-4 bg-white">
+          <main className="flex-1 p-4">
             {/* Section principale avec la vidéo */}
-            <section className="flex flex-col items-center">
-              <div className="w-full max-w-8xl">
-                <div className="relative w-full h-[250px] md:h-[450px] lg:h-[600px] bg-black rounded-lg overflow-hidden">
-                  {video?.url ? (
-                    <YouTube
-                      videoId={video.url}
-                      opts={opts}
-                      className="absolute top-0 left-0 w-full h-full rounded-lg"
-                    />
-                  ) : (
-                    <div className="flex items-center justify-center h-full text-gray-400">
-                      Vidéo indisponible
-                    </div>
-                  )}
-                </div>
+            <section className="bg-white p-4 shadow-md rounded-lg">
+              <div className="relative w-full h-[200px] md:h-[350px] lg:h-[450px] rounded-lg overflow-hidden">
+                {video?.url ? (
+                  <YouTube
+                    videoId={video?.url}
+                    opts={opts}
+                    className="absolute top-0 left-0 w-full h-full rounded-lg"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full text-gray-400">
+                    Vidéo indisponible
+                  </div>
+                )}
+              </div>
 
-                <div className="p-4 text-center md:text-left">
-                  <h1 className="text-2xl font-bold text-slate-800">
-                    {video?.title ?? "Titre inconnu"}
-                  </h1>
-                  <p
-                    className="text-gray-700 mt-2"
-                    dangerouslySetInnerHTML={{
-                      __html: limittext(video?.description ?? "", 200),
-                    }}
-                  ></p>
-                  <p className="text-gray-600 mt-2">Durée : 2 min 23 s</p>
-                </div>
+              <div className="mt-4">
+                <h1 className="text-lg font-bold text-slate-800">
+                  {video?.title ?? "Titre inconnu"}
+                </h1>
+                <p
+                  className="text-gray-700 mt-2"
+                  dangerouslySetInnerHTML={{
+                    __html: limittext(video?.description ?? "", 400),
+                  }}
+                ></p>
+                <p className="text-gray-600 mt-2">
+                  Date de publication : {date_format(video?.created_at)}
+                </p>
               </div>
             </section>
 
