@@ -5,10 +5,12 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <div className=" dark:bg-slate-900 dark:text-slate-200">
+    <div className="min-h-screen flex flex-col bg-slate-100 text-black dark:bg-[#15202b] dark:text-white transition-colors duration-300">
       <Cookies />
       <Navbar />
+
       <Outlet />
+
       <Myfooter />
     </div>
   );

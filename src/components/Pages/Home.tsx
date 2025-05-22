@@ -39,7 +39,7 @@ const Home = () => {
           <main className="flex-1 p-4">
             {/* Section principale avec la vidéo */}
             <section className="bg-white p-4 shadow-md rounded-lg">
-              <div className="relative w-full h-[200px] md:h-[350px] lg:h-[450px] rounded-lg overflow-hidden">
+              <div className="relative w-full h-[400px] md:h-[450px] lg:h-[550px] rounded-lg overflow-hidden">
                 {video?.url ? (
                   <YouTube
                     videoId={video?.url}

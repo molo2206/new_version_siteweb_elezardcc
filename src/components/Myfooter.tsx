@@ -19,7 +19,6 @@ const Myfooter = () => {
     <footer className="bg-principale dark:bg-slate-800 dark:text-white text-white py-10">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Objectif Section */}
-
         <div>
           <h3 className="font-bold text-lg mb-4">Eleza RDC</h3>
           <p className="text-sm md:text-base mb-4">
@@ -30,7 +29,8 @@ const Myfooter = () => {
             du Congo et la Région des Grands-Lacs.
           </p>
         </div>
-        {/* En Plus Section */}
+
+        {/* Autres Section */}
         <div>
           <h3 className="font-bold text-lg mb-4">Autres</h3>
           <ul className="space-y-2">
@@ -69,6 +69,7 @@ const Myfooter = () => {
             </li>
           </ul>
         </div>
+
         {/* Contact Section */}
         <div>
           <h3 className="font-bold text-lg mb-4">Contactez-nous !</h3>
@@ -81,7 +82,6 @@ const Myfooter = () => {
                 address?.country?.name}
             </span>
           </p>
-
           <p className="mb-2">
             <a
               href={"tel:" + address?.phones}
@@ -101,16 +101,16 @@ const Myfooter = () => {
         </div>
       </div>
 
-      {/* Donation Button Section */}
-      <div className="text-center my-8">
+      {/* Donation Section */}
+      <div className="text-center my-8 px-4">
         <h3 className="font-bold text-lg text-white mb-4">
           Soutenez notre mission
         </h3>
-        <p className="text-sm text-white mb-4">
-          Chaque jour, nous combattons la désinformation en vous apportant des
-          faits vérifiés et une information fiable. Mais pour continuer, nous
-          avons besoin de vous. Un journalisme indépendant ne peut exister sans
-          votre soutien.
+        <p className="text-sm text-white mb-4 max-w-3xl mx-auto">
+          Chaque jour, nous luttons contre la désinformation en vous apportant
+          des faits vérifiés et une information fiable. Mais pour continuer,
+          nous avons besoin de vous : un journalisme indépendant ne peut exister
+          sans votre soutien.
         </p>
         <a
           href="#"
@@ -120,7 +120,7 @@ const Myfooter = () => {
         </a>
       </div>
 
-      {/* Social Media Icons */}
+      {/* Social Media Section */}
       <div className="mt-10 text-center">
         <div className="flex justify-center space-x-4">
           <a
@@ -131,21 +131,41 @@ const Myfooter = () => {
             <FaFacebook />
           </a>
           <a
+            target="_blank"
             href={JSON.parse(data?.social_links || "{}")?.twitter}
             className="text-white text-xl font-light hover:text-gray-400"
           >
             <FaTwitter />
           </a>
           <a
+            target="_blank"
             href={JSON.parse(data?.social_links || "{}")?.linkedin}
             className="text-white text-xl font-light hover:text-gray-400"
           >
             <FaLinkedin />
           </a>
         </div>
-        <p className="py-4 font-light" style={{ fontSize: 11 }}>
-          {data?.app_name}. © {currentDate}
+
+        <p className="py-4 font-light text-xs text-white/70">
+          {data?.app_name} © {currentDate}
         </p>
+      </div>
+
+      {/* Legal Links Section */}
+      <div className="mt-6 text-center text-sm text-white/80 space-x-4">
+        <a
+          href="/privacy-policy"
+          className="hover:underline hover:text-white transition"
+        >
+          Politique de confidentialité
+        </a>
+        <span>|</span>
+        <a
+          href="/terms-and-conditions"
+          className="hover:underline hover:text-white transition"
+        >
+          Conditions d'utilisation
+        </a>
       </div>
     </footer>
   );
