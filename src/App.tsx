@@ -30,6 +30,9 @@ import ResearchPage from "./components/Pages/ResearchPage";
 import ResearchPageVideo from "./components/Pages/ResearchPageVideo";
 import PrivacyPolicy from "./components/Pages/PrivacyPolicy";
 import TermsAndConditions from "./components/Pages/TermsAndConditions";
+import Trending from "./components/Pages/Trending";
+import Challenges from "./components/Pages/challenges";
+import Upload from "./components/Pages/upload";
 
 function App() {
   return (
@@ -46,7 +49,10 @@ function App() {
             <Route path="/videos" element={<Videos />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route
+              path="/terms-and-conditions"
+              element={<TermsAndConditions />}
+            />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blog/detail/:slug" element={<DetailBlogs />} />
             <Route path="/about" element={<About />} />
@@ -56,13 +62,19 @@ function App() {
             <Route path="/team" element={<Team />} />
             <Route path="/partners" element={<Partners />} />
             <Route path="/press-page" element={<PressPage />} />
-            <Route path="/newsletter-inscription" element={<NewsletterPage />} />
+            <Route
+              path="/newsletter-inscription"
+              element={<NewsletterPage />}
+            />
             <Route path="/blog/category/:id" element={<Thematiqueblog />} />
             <Route path="/video/:id" element={<DetailVideo />} />
             <Route path="/video-category/:id" element={<VideoListCategory />} />
             <Route path="/equipe-editoriale" element={<EditorialTeam />} />
             <Route path="/search" element={<ResearchPage />} />
             <Route path="/search/video" element={<ResearchPageVideo />} />
+            <Route path="/trending" element={<Trending />} />
+            <Route path="/challenges" element={<Challenges />} />
+            <Route path="/upload" element={<Upload />} />
           </Route>
         </Routes>
       </ToastProvider>
