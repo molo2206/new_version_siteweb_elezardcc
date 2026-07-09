@@ -3,21 +3,20 @@ import Skeleton from "react-loading-skeleton";
 const BlogCardLoad = () => {
   return (
     <>
-      <div className="p-4 shadow-lg w-full dark:bg-slate-800 ">
-        <div className=" overflow-hidden">
+      <div className="p-4 shadow-lg w-full dark:bg-slate-800">
+        <div className="overflow-hidden">
           <Skeleton count={1} width="100%" height={200} />
         </div>
-        <div className=" flex justify-between py-2 text-slate-600">
+        <div className="flex justify-between py-2 text-slate-600">
           <Skeleton count={1} width={200} height={20} />
-     
           <Skeleton count={1} width={60} height={20} />
         </div>
-        <div className="space-y-2 py3">
-          <h1 className="font-montserrat line-clamp-1 font-bold">
-          <Skeleton count={1} width="100%" height={20} />
+        <div className="space-y-2 py-3">
+          <h1 className="line-clamp-1 font-bold">
+            <Skeleton count={1} width="100%" height={20} />
           </h1>
-          <p className="font-montserrat">
-          <Skeleton count={5} width="100%" height={15} />
+          <p className="line-clamp-5">
+            <Skeleton count={5} width="100%" height={15} />
           </p>
         </div>
       </div>

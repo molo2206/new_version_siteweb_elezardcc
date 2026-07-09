@@ -32,7 +32,6 @@ import PrivacyPolicy from "./components/Pages/PrivacyPolicy";
 import TermsAndConditions from "./components/Pages/TermsAndConditions";
 import Trending from "./components/Pages/Trending";
 import Challenges from "./components/Pages/challenges";
-import Upload from "./components/Pages/upload";
 
 function App() {
   return (
@@ -74,7 +73,6 @@ function App() {
             <Route path="/search/video" element={<ResearchPageVideo />} />
             <Route path="/trending" element={<Trending />} />
             <Route path="/challenges" element={<Challenges />} />
-            <Route path="/upload" element={<Upload />} />
           </Route>
         </Routes>
       </ToastProvider>

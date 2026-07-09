@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities; 
+
+
+* Application de la police Facebook sur tout le document */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optionnel : tous les éléments héritent */
+* {
+  font-family: inherit;
+}

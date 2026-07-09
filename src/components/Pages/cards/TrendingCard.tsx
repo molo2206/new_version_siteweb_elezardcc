@@ -33,19 +33,7 @@ const TrendingCard = ({ video, rank }: Props) => {
           <h3 className="font-semibold text-gray-900 dark:text-white line-clamp-2">
             {limittext(video?.title, 60)}
           </h3>
-          <div className="flex items-center gap-2 mt-2">
-            <img
-              src={
-                video?.creator?.avatar ||
-                "https://randomuser.me/api/portraits/lego/1.jpg"
-              }
-              alt={video?.creator?.name || "Créateur"}
-              className="w-6 h-6 rounded-full object-cover"
-            />
-            <span className="text-sm text-gray-600 dark:text-gray-400">
-              {video?.creator?.name || "Anonyme"}
-            </span>
-          </div>
+          
         </div>
       </a>
     </div>

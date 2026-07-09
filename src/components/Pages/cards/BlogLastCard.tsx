@@ -19,7 +19,6 @@ const BlogLastCard = ({ blog }: props) => {
         <div className="right-item-content text-slate-600 dark:text-slate-700">
           <img className="right-bar-image" src={blog?.image} />
           <a
-           
             className="right-item-title line-clamp-2 font-semibold hover:text-orange-300"
             dangerouslySetInnerHTML={{
               __html: showingTranslateValue(blog?.translations, lang)?.title,

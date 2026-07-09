@@ -1,46 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react";
-import CategoryServices from "../services/CategoryServices";
-import useAsync from "../hooks/useAsync";
-import { showingTranslateValue } from "../utils/heleprs";
+import { useState } from "react";
 import { useAuthContext } from "../context";
-import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
 import ReactCountryFlag from "react-country-flag";
+
 interface props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   showMenu?: any;
 }
 
 const SidebarMenu = ({ showMenu }: props) => {
-  // const { data } = useAsync(() => SettingsServices.getSettings());
-  const [openMenu, setOpenMenu] = useState(null);
-  const { data: category } = useAsync(() => CategoryServices.getCategory());
-  const { lang } = useAuthContext();
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-  );
-  const element = document.documentElement;
-  useEffect(() => {
-    if (theme === "dark") {
-      element.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      element.classList.remove("dark");
-      localStorage.removeItem("theme");
-    }
-  }, [theme]);
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const toggleMenu = (menu: any) => {
-    setOpenMenu(openMenu === menu ? null : menu);
-  };
-
   const { handleLanguageChange } = useAuthContext();
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const [selectedLanguage, setSelectedLanguage] = useState("fr");
-  const selectLanguage = (language: any) => {
+  const selectLanguage = (language: string) => {
     setSelectedLanguage(language);
     setDropdownOpen(false);
     handleLanguageChange(language);
@@ -49,187 +22,120 @@ const SidebarMenu = ({ showMenu }: props) => {
   return (
     <div
       className={`${
-        showMenu ? "left-0" : "-left-[100%]"
-      } fixed bottom-0 top-0 z-20 flex h-full w-80  py-10
-        flex-col justify-between bg-principal dark:bg-slate-800 
-         transition-all
-        duration-200 md:hidden rounded-r-xl shadow-md  
-    `}
+        showMenu ? "left-0" : "-left-full"
+      } fixed bottom-0 top-0 z-30 flex h-full w-80 flex-col bg-white dark:bg-slate-900 shadow-xl transition-all duration-300 ease-in-out md:hidden`}
     >
-      <div className="relative mt-5  text-sm dark:bg-slate-800 bg-principale h-full">
-        {/* Menu Items */}
-        <ul className="space-y-4 p-8 ">
+      <div className="flex-1 overflow-y-auto mt-24 px-4">
+        <ul className="space-y-1">
+          {/* Accueil */}
           <li>
             <a
-              href="#"
-              className="block text-white  dark:bg-slate-800
-              dark:text-white  font-medium"
+              href="/"
+              className="flex items-center rounded-lg px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-principale/10 hover:text-principale transition-colors"
             >
-              Accueil
+              <span className="font-medium">Accueil</span>
             </a>
           </li>
+          {/* Tendances */}
           <li>
-            <div>
-              <button
-                onClick={() => toggleMenu("services")}
-                className="flex justify-between items-center w-full 
-                 text-white dark:bg-slate-800
-                 dark:text-white  font-medium"
-              >
-                Catégories
-                <span>{openMenu === "services" ? "−" : "+"}</span>
-              </button>
-              {openMenu === "services" && (
-                <ul
-                  className="mt-2 pl-4 space-y-2 text-white dark:bg-slate-800
-                 dark:text-white"
-                >
-                  {category?.map((item: any) => (
-                    <li>
-                      <a href={`/video-category/` + item?.id}>
-                        {showingTranslateValue(item?.translations, lang)?.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+            <a
+              href="/trending"
+              className="flex items-center rounded-lg px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-principale/10 hover:text-principale transition-colors"
+            >
+              <span className="font-medium">Tendances</span>
+            </a>
           </li>
-
+          {/* Vidéos */}
           <li>
-            <div>
-              <button
-                onClick={() => toggleMenu("ressources")}
-                className="flex justify-between items-center w-full 
-                text-white dark:bg-slate-800
-                 dark:text-white font-medium"
-              >
-                Ressources
-                <span>{openMenu === "ressources" ? "−" : "+"}</span>
-              </button>
-              {openMenu === "ressources" && (
-                <ul
-                  className="mt-2 pl-4 space-y-2 dark:bg-slate-800
-                 dark:text-white  text-white"
-                >
-                  <li>
-                    <a href="/videos">Vidéos</a>
-                  </li>
-                  <li>
-                    <a href="/blogs">Articles</a>
-                  </li>
-                </ul>
-              )}
-            </div>
+            <a
+              href="/videos"
+              className="flex items-center rounded-lg px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-principale/10 hover:text-principale transition-colors"
+            >
+              <span className="font-medium">Vidéos</span>
+            </a>
           </li>
+          {/* Catégories (sous-menu) */}
+        
+          {/* Partenariat */}
           <li>
             <a
               href="/partners"
-              className="block  
-                 dark:text-white  text-white font-medium"
+              className="flex items-center rounded-lg px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-principale/10 hover:text-principale transition-colors"
             >
-              Partenariat
+              <span className="font-medium">Partenariat</span>
             </a>
           </li>
+          {/* Eleza Fact (externe) */}
           <li>
             <a
-              target="_blank"
               href="https://elezafact.cd/"
-              className="block 
-                 dark:text-white  text-white font-medium"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center rounded-lg px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-principale/10 hover:text-principale transition-colors"
             >
-              Eleza Fact
+              <span className="font-medium">Eleza Fact</span>
             </a>
           </li>
+          {/* À propos */}
           <li>
             <a
               href="/about"
-              className="block 
-                 dark:text-white  text-white font-medium"
+              className="flex items-center rounded-lg px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-principale/10 hover:text-principale transition-colors"
             >
-              À propos
+              <span className="font-medium">À propos</span>
             </a>
           </li>
-          <li>
-            <div className=" flex justify-between space-x-2 px-4 ">
-              {theme === "dark" ? (
-                <button
-                  onClick={() => setTheme("light")}
-                  className="bg-principale dark:bg-slate-800 text-white px-4 py-2 rounded-lg border hover:bg-slate-500"
-                >
-                  <BiSolidSun size={12} className="text-xl cursor-pointer " />
-                </button>
-              ) : (
-                <button
-                  onClick={() => setTheme("dark")}
-                  className="bg-principale dark:bg-slate-800 text-white px-4 py-2 rounded-lg border hover:bg-slate-500"
-                >
-                  <BiSolidMoon
-                    size={12}
-                    className="text-xl rounded-full cursor-pointer "
-                  />
-                </button>
-              )}
-            </div>
-          </li>
-          <li>
-            <div className="relative ">
-              {/* Bouton principal */}
-              <button
-                className="flex items-center gap-2 bg-principale dark:bg-slate-800 rounded-lg border text-white px-4 py-2 "
-                onClick={toggleDropdown}
-              >
-                <ReactCountryFlag
-                  countryCode={selectedLanguage === "en" ? "GB" : "FR"}
-                  svg
-                  style={{
-                    width: "1.5em",
-                    height: "1.5em",
-                  }}
-                  title={selectedLanguage === "en" ? "English" : "French"}
-                />
-                {selectedLanguage === "en" ? "English" : "French"}
-                <span className="ml-2">▼</span>
-              </button>
+        </ul>
 
-              {/* Dropdown */}
+        {/* Sélecteur de langue uniquement */}
+        <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6">
+          <div className="px-3 py-2">
+            <div className="relative">
+              <button
+                onClick={toggleDropdown}
+                className="flex w-full items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-gray-700 dark:text-gray-200"
+              >
+                <div className="flex items-center gap-2">
+                  <ReactCountryFlag
+                    countryCode={selectedLanguage === "en" ? "GB" : "FR"}
+                    svg
+                    style={{ width: "1.2em", height: "1.2em" }}
+                  />
+                  <span>
+                    {selectedLanguage === "en" ? "English" : "Français"}
+                  </span>
+                </div>
+                <span>▼</span>
+              </button>
               {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-40 bg-white  border dark:border-slate-600 rounded shadow-lg">
+                <div className="absolute bottom-full left-0 mb-1 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg">
                   <button
-                    className="flex items-center gap-2 w-full px-4 py-2 dark:bg-slate-800 text-white dark:text-white hover:bg-gray-100"
                     onClick={() => selectLanguage("en")}
+                    className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <ReactCountryFlag
                       countryCode="GB"
                       svg
-                      style={{
-                        width: "1.5em",
-                        height: "1.5em",
-                      }}
-                      title="English"
+                      style={{ width: "1.2em", height: "1.2em" }}
                     />
                     English
                   </button>
                   <button
-                    className="flex items-center gap-2 w-full px-4 py-2 dark:bg-slate-800 text-white hover:bg-gray-100"
                     onClick={() => selectLanguage("fr")}
+                    className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <ReactCountryFlag
                       countryCode="FR"
                       svg
-                      style={{
-                        width: "1.5em",
-                        height: "1.5em",
-                      }}
-                      title="French"
+                      style={{ width: "1.2em", height: "1.2em" }}
                     />
-                    French
+                    Français
                   </button>
                 </div>
               )}
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -134,8 +134,8 @@ const Upload = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-slate-900 pt-24 px-4 md:px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="text-slate-800 bg-white min-h-screen px-4 md:px-16 py-20">
+      <div className="max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
           <FaUpload className="text-principale" />
           Publier une vidéo
